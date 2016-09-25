@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TTTShifatWilliam</string>
+    <string name="vsDroid">You are playing against the Droid</string>
+    <string name="vsHuman">You are playing against a human</string>
+    <string name="reset">Reset</string>
+    <string name="zero">Zero</string>
+    <string name="scores">Score</string>
+    <string name="play">Play</string>
+</resources>
