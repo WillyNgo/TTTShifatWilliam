@@ -2,8 +2,17 @@
     <string name="app_name">TTTShifatWilliam</string>
     <string name="vsDroid">You are playing against the Droid</string>
     <string name="vsHuman">You are playing against a human</string>
-    <string name="reset">Reset</string>
-    <string name="zero">Zero</string>
-    <string name="scores">Score</string>
-    <string name="play">Play</string>
+    <string name="reset_btn">Reset</string>
+    <string name="zero_btn">Zero</string>
+    <string name="scores_btn">Score</string>
+    <string name="play_btn">Play</string>
+    <string name="about_btn">About</string>
+    <string name="about">Here are some rules that I will fill up eventually, for now keep this as placeholder.</string>
+    <string name="credit">Credits: Shifat Khan &amp; William Ngo</string>
+    <string name="wins">Wins</string>
+    <string name="losses">Losses</string>
+    <string name="ties">Ties</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="cpu">CPU</string>
 </resources>
