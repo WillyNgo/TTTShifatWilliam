@@ -25,87 +25,117 @@
             >
 
             <TableLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal">
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:id="@+id/imageButton1"
-                        android:src="@drawable/felyne"
+                        android:src="@drawable/quest2"
                         android:layout_weight="1"
-                        android:layout_height="100dp" />
+                        android:layout_height="100dp"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton2"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:id="@+id/imageButton3"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne"
-                        android:layout_height="100dp" />
+                        android:src="@drawable/quest2"
+                        android:layout_height="100dp"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton4"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton5"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton6"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton7"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton8"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton9"
                         android:layout_weight="1"
-                        android:src="@drawable/felyne" />
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>
@@ -130,7 +160,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_btn"
                 android:id="@+id/about_btn"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="LaunchAbout" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -144,7 +175,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/scores_btn"
                 android:id="@+id/scores_btn"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="LaunchScore"/>
 
             <Button
                 android:layout_width="wrap_content"
