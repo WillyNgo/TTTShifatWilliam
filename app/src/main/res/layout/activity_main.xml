@@ -36,27 +36,27 @@
 
                     <ImageButton
                         android:layout_width="100dp"
+                        android:id="@+id/imageButton0"
+                        android:src="@drawable/quest2"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:id="@+id/imageButton1"
-                        android:src="@drawable/quest2"
                         android:layout_weight="1"
-                        android:layout_height="100dp"
+                        android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
                         android:id="@+id/imageButton2"
-                        android:layout_weight="1"
-                        android:src="@drawable/quest2"
-                        android:padding="10dp"
-                        android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
-
-                    <ImageButton
-                        android:layout_width="100dp"
-                        android:id="@+id/imageButton3"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
                         android:layout_height="100dp"
@@ -70,6 +70,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/imageButton3"
+                        android:layout_weight="1"
+                        android:src="@drawable/quest2"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
 
                     <ImageButton
                         android:layout_width="100dp"
@@ -90,6 +100,12 @@
                         android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <ImageButton
                         android:layout_width="100dp"
@@ -100,12 +116,6 @@
                         android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
 
                     <ImageButton
                         android:layout_width="100dp"
@@ -121,16 +131,6 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imageButton8"
-                        android:layout_weight="1"
-                        android:src="@drawable/quest2"
-                        android:padding="10dp"
-                        android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
-
-                    <ImageButton
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:id="@+id/imageButton9"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
                         android:padding="10dp"
@@ -153,7 +153,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/reset_btn"
                 android:id="@+id/reset_btn"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="resetBoard_onClick"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -183,7 +184,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/play_btn"
                 android:id="@+id/play_btn"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="switchMode"/>
         </LinearLayout>
 
         <LinearLayout
