@@ -100,20 +100,20 @@ public class MainActivity extends AppCompatActivity {
             ib.setImageResource(R.drawable.cross);
         }
         else {
-            dataArray[index] = 2;
+            dataArray[index] = 0;
             ib.setImageResource(R.drawable.tlzino);
         }
 
         //Increment turn coutner
         turnCounter++;
 
-        //Disable image button
-        view.setOnClickListener(null);
-        //Check winner
-        checkWinner();
-
         //give turn to other player
         playersTurn = !playersTurn;
+
+        //Disable image button
+        view.setOnClickListener(null);
+
+        checkWinner();
     }
 
     /**
@@ -125,41 +125,41 @@ public class MainActivity extends AppCompatActivity {
     public void checkWinner()
     {
         boolean winner = false;
+        int player;
+
+        if(playersTurn)
+            player = 1;
+        else
+            player = 2;
 
         //Checks for each row, cols, and diagonals if there are 3 symbols in a row for each player
 
             //Checking for each row
-            if(dataArray[0] == dataArray[1] && dataArray[1] == dataArray[2])
+            if(dataArray[0] == player && dataArray[1] == player && dataArray[2] == player)
                 winner = true;
-            if(dataArray[3] == dataArray[4] && dataArray[4] == dataArray[5])
+            if(dataArray[3] == player && dataArray[4] == player && dataArray[5] == player)
                 winner = true;
-            if(dataArray[6] == dataArray[7]  && dataArray[7] == dataArray[8])
+            if(dataArray[6] == player && dataArray[7] == player && dataArray[8] == player)
                 winner = true;
 
             //Checking for each column
-            if(dataArray[0] == dataArray[3] && dataArray[3] == dataArray[6])
+            if(dataArray[0] == player && dataArray[3] == player && dataArray[6] == player)
                 winner = true;
-            if(dataArray[1] == dataArray[4] && dataArray[4] == dataArray[7])
+            if(dataArray[1] == player && dataArray[4] == player && dataArray[7] == player)
                 winner = true;
-            if(dataArray[2] == dataArray[5] && dataArray[5] == dataArray[8])
+            if(dataArray[2] == player && dataArray[5] == player && dataArray[8] == player)
                 winner = true;
 
             //Checking for both diagonals
-            if(dataArray[0] == dataArray[4] && dataArray[4] == dataArray[8])
+            if(dataArray[0] == player && dataArray[4] == player && dataArray[8] == player)
                 winner = true;
-            if(dataArray[2] == dataArray[4] && dataArray[4] == dataArray[6])
+            if(dataArray[2] == player && dataArray[4] == player && dataArray[6] == player)
                 winner = true;
 
             //If a winner has been found, end game and exit loop
-            if(winner)
-            {
-                //Add if statement to check who's the winner
-                if(playersTurn)
-                    endGame(1);
-                else
-                    endGame(2);
+            if(winner) {
+                endGame(player);
             }
-
 
         //If played all pieces and there is no winner, end game in a tie
         if(turnCounter == 9 && !winner)
