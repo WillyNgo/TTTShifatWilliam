@@ -15,4 +15,14 @@
     <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>
     <string name="cpu">CPU</string>
+    <string name="p1wins">0</string>
+    <string name="p1losses">0</string>
+    <string name="p1ties">0</string>
+    <string name="p2wins">0</string>
+    <string name="p2losses">0</string>
+    <string name="p2ties">0</string>
+    <string name="cpuwins">0</string>
+    <string name="cpulosses">0</string>
+    <string name="cputies">0</string>
+
 </resources>
