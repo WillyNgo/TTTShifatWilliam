@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             ib.setImageResource(R.drawable.cross);
         }
         else {
-            dataArray[index] = 0;
+            dataArray[index] = 2;
             ib.setImageResource(R.drawable.tlzino);
         }
 
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         boolean winner = false;
         int player;
 
-        if(playersTurn)
+        if(!playersTurn)
             player = 1;
         else
             player = 2;
