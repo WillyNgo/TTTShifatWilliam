@@ -8,11 +8,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public boolean againstDroid = true;
-    public boolean playersTurn = true;
-    public ImageButton[] imgBtnArray = new ImageButton[9];
-    public int[] dataArray = new int[9];
-
+    public boolean againstDroid = true; //Determines whether user is playing against the droid or another human
+    public boolean playersTurn = true; //Determines whose turn it currently is
+    public ImageButton[] imgBtnArray = new ImageButton[9]; //Array holding all the imgBtns
+    public int[] dataArray = new int[9]; //Array containing values 0 and 1 that represents X and O
+    public int turnCounter = 0; //Counter checks for tie game when it reaches 9 and there is no winner
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Once player has played his/her/its turn, set appropriate value into the dataArray,
-     * Switch turn and disables the clicking of the image button that was clicked
+     * Switch turn and disables the clicking of the image button that was clicked.
+     * Afterwards, check across the board if there is a winner.
      *
      * @param view
      */
@@ -101,12 +102,92 @@ public class MainActivity extends AppCompatActivity {
             ib.setImageResource(R.drawable.tlzino);
         }
 
+        //Increment turn coutner
+        turnCounter++;
+
         //give turn to other player
         playersTurn = !playersTurn;
 
         //Disable image button
         view.setOnClickListener(null);
+
+        checkWinner();
     }
+
+    /**
+     * This methods checks for a winner after every turn has been played.
+     * It checks every row and column as well as both diagonal for a series of 3 consecutive symbols
+     * Once it finds a match, it ends the game and increments the scores
+     * If after 9 turns and there is still no winner, the game ends in a tie
+     */
+    public void checkWinner()
+    {
+        boolean winner = false;
+
+        //Checks for each row, cols, and diagonals if there are 3 symbols in a row for each player
+        for(int player = 0; player < 2; player++)
+        {
+            //Checking for each row
+            if(dataArray[0] == player && dataArray[1] == player && dataArray[2] == player)
+                winner = true;
+            if(dataArray[3] == player && dataArray[4] == player && dataArray[5] == player)
+                winner = true;
+            if(dataArray[6] == player && dataArray[7] == player && dataArray[8] == player)
+                winner = true;
+
+            //Checking for each column
+            if(dataArray[0] == player && dataArray[3] == player && dataArray[6] == player)
+                winner = true;
+            if(dataArray[1] == player && dataArray[4] == player && dataArray[7] == player)
+                winner = true;
+            if(dataArray[2] == player && dataArray[5] == player && dataArray[8] == player)
+                winner = true;
+
+            //Checking for both diagonals
+            if(dataArray[0] == player && dataArray[4] == player && dataArray[8] == player)
+                winner = true;
+            if(dataArray[2] == player && dataArray[4] == player && dataArray[6] == player)
+                winner = true;
+
+            //If a winner has been found, end game and exit loop
+            if(winner)
+            {
+                endGame(player);
+                break;
+            }
+        }//End For Loop
+
+        //If played all pieces and there is no winner, end game in a tie
+        if(turnCounter == 9 && !winner)
+            endGame(9);
+
+    }
+
+    /**
+     * When the game ends, this method checks which player has won. If the value is 9 then that means
+     * there is no winner. Increments appropriate values for winner and decrement for loser.
+     *
+     * @param player - The player who has won the game. If the value is 9, then it's a tie game
+     */
+    public void endGame(int player)
+    {
+        //Disables all buttons
+        for(ImageButton imgBtn : imgBtnArray)
+            imgBtn.setOnClickListener(null);
+
+        //Increment wins
+        if(player == 0)
+            ;
+        if(player == 1)
+            ;
+        if(player == 9)//Tie game;
+            ;
+
+
+        //Show win message
+
+    }
+
 
     /**
      * This methods reset the images of all ImageButton to their default
@@ -114,13 +195,19 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setUpImageButtons()
     {
+        //Sets every imgBtns src to the cover picture
+        //and adds onClick listener to enable user to click
         for (ImageButton imgBtn : imgBtnArray){
             imgBtn.setImageResource(R.drawable.quest2);
             imgBtn.setOnClickListener(myListener);
         }
-
     }
 
+    /**
+     * Switches between vs the CPU and vs a Human
+     * Resets the board while doing so.
+     * @param view
+     */
     public void switchMode(View view)
     {
         againstDroid = !againstDroid;
@@ -141,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             playedTurn(v);
+
         }
     };
 
