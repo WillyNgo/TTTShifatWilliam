@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Random;
+
 import static com.williamngo.tttshifatwilliam.R.string.vsDroid;
 
 public class MainActivity extends AppCompatActivity {
@@ -100,13 +102,32 @@ public class MainActivity extends AppCompatActivity {
         ImageButton ib = (ImageButton)findViewById(view.getId());
         int index = (Integer) ib.getTag();
 
-        //Check the players turn before associating correct image
-        //Insert value into dataArray according to the player
-        if(playersTurn) {
+        if(againstDroid){
+            playerTurn(view);
+            droidTurn();
+        }
+        else{
+            //Check the players turn before associating correct image
+            //Insert value into dataArray according to the player
+            playerTurn(view);
+        }
+    }
+
+    /**
+     * Method to handle a player's turn
+     */
+    private void playerTurn(View view)
+    {
+        ImageButton ib = (ImageButton)findViewById(view.getId());
+        int index = (Integer) ib.getTag();
+
+        if(playersTurn)
+        {
             dataArray[index] = 1;
             ib.setImageResource(R.drawable.cross);
         }
-        else {
+        else
+        {
             dataArray[index] = 2;
             ib.setImageResource(R.drawable.tlzino);
         }
@@ -122,6 +143,41 @@ public class MainActivity extends AppCompatActivity {
         view.setOnClickListener(null);
 
         checkWinner();
+
+    }
+
+    /**
+     * Algorithm for a bot's decision for choosing a box.
+     */
+    private void droidTurn()
+    {
+        // Indicates if the CPU chose a valid box.
+        boolean validChoice = false;
+
+        Random rn = new Random();
+        int choice = -1;
+
+        // If the board isn't full yet.
+        if(turnCounter != 9)
+        {
+            while(!validChoice)
+            {
+                // Get a random number between 0 and 8 inclusively.
+                choice = rn.nextInt(8 + 1);
+
+                if(dataArray[choice] == 0)
+                {
+                    validChoice = true;
+                    dataArray[choice] = 2;
+                }
+            }
+
+            turnCounter++;
+            playersTurn = !playersTurn;
+            imgBtnArray[choice].setImageResource(R.drawable.tlzino);
+            imgBtnArray[choice].setOnClickListener(null);
+            checkWinner();
+        }
     }
 
     /**
