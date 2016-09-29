@@ -1,6 +1,7 @@
 package com.williamngo.tttshifatwilliam;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton[] imgBtnArray = new ImageButton[9]; //Array holding all the imgBtns
     public int[] dataArray = new int[9]; //Array containing values 0 and 1 that represents X and O
     public int turnCounter = 0; //Counter checks for tie game when it reaches 9 and there is no winner
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,80 +177,31 @@ public class MainActivity extends AppCompatActivity {
      */
     public void endGame(int player)
     {
+        //Game has ended, so disable all remaining buttons
         //Disables all buttons
         for(ImageButton imgBtn : imgBtnArray)
             imgBtn.setOnClickListener(null);
 
-        //Increment wins
-        if(player == 1) // If user wins
-        {
-            //Get textview of player 1's wins and increment
-            TextView p1wins_textview = (TextView)findViewById(R.id.p1_wins);
-            int p1wins = Integer.parseInt(p1wins_textview.getText().toString());
-            p1wins++;
-            p1wins_textview.setText(p1wins);
-
-            //Increment losses of player 2
-            TextView p2losses_textview = (TextView)findViewById(R.id.p2_losses);
-            int p2losses = Integer.parseInt(p2losses_textview.getText().toString());
-            p2losses++;
-            p2losses_textview.setText(p2losses);
-        }
-
-        if(player == 2) //If opponent wins
-        {
-            if(againstDroid)// If user played against droid
-            {
-                TextView cpuwins_textview = (TextView)findViewById(R.id.cpu_wins);
-                int cpuwins = Integer.parseInt(cpuwins_textview.getText().toString());
-                cpuwins++;
-                cpuwins_textview.setText(cpuwins);
-            }
-            else // means user played against a human
-            {
-                //Get textview of player 2's wins and increment
-                TextView p2wins_textview = (TextView)findViewById(R.id.p2_wins);
-                int p2wins = Integer.parseInt(p2wins_textview.getText().toString());
-                p2wins++;
-                p2wins_textview.setText(p2wins);
-            }
-
-
-            //Increment losses of player 1
-            TextView p1losses_textview = (TextView)findViewById(R.id.p1_losses);
-            int p1losses = Integer.parseInt(p1losses_textview.getText().toString());
-            p1losses++;
-            p1losses_textview.setText(p1losses);
-        }
-
-        if(player == 9)//Tie game;
-        {
-            if(againstDroid)
-            {
-                TextView cputies_textview = (TextView)findViewById(R.id.cpu_ties);
-                int cputies = Integer.parseInt(cputies_textview.getText().toString());
-                cputies++;
-                cputies_textview.setText(cputies);
-            }
-            else
-            {
-                TextView p2ties_textview = (TextView)findViewById(R.id.p2_ties);
-                int p2ties = Integer.parseInt(p2ties_textview.getText().toString());
-                p2ties++;
-                p2ties_textview.setText(p2ties);
-            }
-
-            TextView p1ties_textview = (TextView)findViewById(R.id.p1_ties);
-            int p1ties = Integer.parseInt(p1ties_textview.getText().toString());
-            p1ties++;
-            p1ties_textview.setText(p1ties);
-        }
-
-
-        //Show win message
-
+        //Pass value of winner to the score class and have it update the score
+        Intent intent = new Intent(this, score.class);
+        intent.putExtra("player", player);
+        intent.putExtra("againstDroid", againstDroid);
+        startActivity(intent);
     }
 
+    /*
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+
+        SharedPreferences prefer = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefer.edit();
+
+        //Get current values
+
+    }
+    */
 
     /**
      * This methods reset the images of all ImageButton to their default
