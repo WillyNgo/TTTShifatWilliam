@@ -1,7 +1,9 @@
 package com.williamngo.tttshifatwilliam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -13,15 +15,15 @@ public class score extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score);
-        showScore();
+        showScore(getApplicationContext());
     }
 
     /**
      *  Gets shared preferences value and displays them
      *
      */
-    public void showScore() {
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+    public void showScore(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         //Get all values from every player
         int p1wins = prefs.getInt("p1wins", 0);

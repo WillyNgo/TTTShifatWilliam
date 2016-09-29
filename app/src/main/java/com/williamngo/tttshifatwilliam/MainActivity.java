@@ -1,7 +1,9 @@
 package com.williamngo.tttshifatwilliam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -181,16 +183,16 @@ public class MainActivity extends AppCompatActivity {
         for (ImageButton imgBtn : imgBtnArray)
             imgBtn.setOnClickListener(null);
 
-        updateScore(winner);
+        updateScore(winner, getApplicationContext());
     }
 
     /**
      *
      * @param winner - Represents winner of the game. 1 is user, 2 is opponent, 9 is tie game
      */
-    public void updateScore(int winner)
+    public void updateScore(int winner, Context context)
     {
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         //Increment wins
         if(winner == 1) // If user wins
