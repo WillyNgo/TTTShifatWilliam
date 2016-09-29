@@ -38,26 +38,26 @@ public class score extends AppCompatActivity {
 
         //Get textview of all playres
         TextView p1wins_textview = (TextView) findViewById(R.id.p1_wins);
-        p1wins_textview.setText(p1wins);
+        p1wins_textview.setText(p1wins+"");
         TextView p2wins_textview = (TextView) findViewById(R.id.p2_wins);
-        p2wins_textview.setText(p2wins);
+        p2wins_textview.setText(p2wins+"");
         TextView cpuwins_textview = (TextView) findViewById(R.id.cpu_wins);
-        cpuwins_textview.setText(cpuwins);
+        cpuwins_textview.setText(cpuwins+"");
 
         //Get losses textview and update them
         TextView cpulosses_textview = (TextView) findViewById(R.id.cpu_losses);
-        cpulosses_textview.setText(cpulosses);
+        cpulosses_textview.setText(cpulosses+"");
         TextView p2losses_textview = (TextView) findViewById(R.id.p2_losses);
-        p2losses_textview.setText(p2losses);
+        p2losses_textview.setText(p2losses+"");
         TextView p1losses_textview = (TextView) findViewById(R.id.p1_losses);
-        p1losses_textview.setText(p1losses);
+        p1losses_textview.setText(p1losses+"");
 
         //Get ties textview and update them
         TextView cputies_textview = (TextView) findViewById(R.id.cpu_ties);
-        cputies_textview.setText(cputies);
+        cputies_textview.setText(cputies+"");
         TextView p2ties_textview = (TextView) findViewById(R.id.p2_ties);
-        p2ties_textview.setText(p2ties);
+        p2ties_textview.setText(p2ties+"");
         TextView p1ties_textview = (TextView) findViewById(R.id.p1_ties);
-        p1ties_textview.setText(p1ties);
+        p1ties_textview.setText(p1ties+"");
     }
 }
