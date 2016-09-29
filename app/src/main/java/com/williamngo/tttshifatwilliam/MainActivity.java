@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import static com.williamngo.tttshifatwilliam.R.string.p2ties;
 import static com.williamngo.tttshifatwilliam.R.string.vsDroid;
 
 public class MainActivity extends AppCompatActivity {
@@ -83,11 +84,24 @@ public class MainActivity extends AppCompatActivity {
         setUpImageButtons();
 
         //Resets all values of array to 0
-        for (int i : dataArray)
-            i = 0;
-
+        for (int i = 0; i < dataArray.length; i++) {
+            dataArray[i] = 0;
+        }
         //reset turn counter;
         turnCounter = 0;
+    }
+
+    /**
+     *  Delete past scores.
+     * @param view
+     */
+    public void resetScores(View view)
+    {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.clear();
+        editor.commit();
     }
 
     /**
@@ -226,9 +240,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         //If played all pieces and there is no winner, end game in a tie
-        if(turnCounter == 9 && !winner)
+        if(turnCounter == 9 && winner == false) {
             endGame(9);
-
+            System.out.println("Game is tied!!");
+        }
     }
 
     /**
@@ -316,20 +331,23 @@ public class MainActivity extends AppCompatActivity {
             {
                 int cputies = prefs.getInt("cputies", 0);
                 cputies++;
-
                 editor.putInt("cputies", cputies);
             }
             else
             {
                 int p2ties = prefs.getInt("p2ties", 0);
                 p2ties++;
-
+                System.out.println("p2 ties: " + p2ties);
                 editor.putInt("p2ties", p2ties);
             }
             int p1ties = prefs.getInt("p1ties", 0);
             p1ties++;
 
+            //Testing
+            System.out.println("p1 ties: " + p1ties);
+
             editor.putInt("p1ties", p1ties);
+            editor.commit();
         }
     }
 
@@ -372,7 +390,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             playedTurn(v);
-
+            //Testing
+            System.out.println("Has onclick Listener!");
         }
     };
 

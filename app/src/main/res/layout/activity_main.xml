@@ -169,7 +169,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/zero_btn"
                 android:id="@+id/zero_btn"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="resetScores"/>
 
             <Button
                 android:layout_width="wrap_content"
