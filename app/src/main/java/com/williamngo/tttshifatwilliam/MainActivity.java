@@ -173,35 +173,103 @@ public class MainActivity extends AppCompatActivity {
      * When the game ends, this method checks which player has won. If the value is 9 then that means
      * there is no winner. Increments appropriate values for winner and decrement for loser.
      *
-     * @param player - The player who has won the game. If the value is 9, then it's a tie game
+     * @param winner - The player who has won the game. If the value is 9, then it's a tie game
      */
-    public void endGame(int player)
-    {
+    public void endGame(int winner) {
         //Game has ended, so disable all remaining buttons
         //Disables all buttons
-        for(ImageButton imgBtn : imgBtnArray)
+        for (ImageButton imgBtn : imgBtnArray)
             imgBtn.setOnClickListener(null);
 
-        //Pass value of winner to the score class and have it update the score
-        Intent intent = new Intent(this, score.class);
-        intent.putExtra("player", player);
-        intent.putExtra("againstDroid", againstDroid);
-        startActivity(intent);
+        updateScore(winner);
     }
 
-    /*
-    @Override
-    public void onPause()
+    /**
+     *
+     * @param winner - Represents winner of the game. 1 is user, 2 is opponent, 9 is tie game
+     */
+    public void updateScore(int winner)
     {
-        super.onPause();
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        //Increment wins
+        if(winner == 1) // If user wins
+        {
+            //Shared Prefs
+            int p1wins = prefs.getInt("p1wins", 0);
+            p1wins++;
+            editor.putInt("p1wins", p1wins);
 
-        SharedPreferences prefer = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefer.edit();
+            if(againstDroid)
+            {
+                int cpulosses = prefs.getInt("cpulosses", 0);
+                cpulosses++;
 
-        //Get current values
+                //Commit player 2's lossess
+                editor.putInt("cpulosses", cpulosses);
+            }
+            else{
+                int p2losses = prefs.getInt("p2losses", 0);
+                p2losses++;
 
+                //Commit player 2's lossess
+                editor.putInt("p2losses", p2losses);
+            }
+            editor.commit();
+        }
+        if(winner == 2) //If opponent wins
+        {
+            if(againstDroid)// If user played against droid
+            {
+                //Shared Prefs
+                //SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+                int cpuwins = prefs.getInt("cpuwins", 0);
+                cpuwins++;
+
+                //Commit cpu wins
+                editor.putInt("cpuwins", cpuwins);
+            }
+            else // means user played against a human
+            {
+                //Get textview of player 2's wins and increment
+                int p2wins = prefs.getInt("p2wins", 0);
+                p2wins++;
+
+                //Commit for player 2
+                editor.putInt("p2wins", p2wins);
+            }
+
+            //Increment losses of player 1
+            int p1losses = prefs.getInt("p1losses", 0);
+            p1losses++;
+
+            //Commit player1's losses
+            editor.putInt("p1losses", p1losses);
+            editor.commit();
+        }
+
+        if(winner == 9)//Tie game;
+        {
+            if(againstDroid)
+            {
+                int cputies = prefs.getInt("cputies", 0);
+                cputies++;
+
+                editor.putInt("cputies", cputies);
+            }
+            else
+            {
+                int p2ties = prefs.getInt("p2ties", 0);
+                p2ties++;
+
+                editor.putInt("p2ties", p2ties);
+            }
+            int p1ties = prefs.getInt("p1ties", 0);
+            p1ties++;
+
+            editor.putInt("p1ties", p1ties);
+        }
     }
-    */
 
     /**
      * This methods reset the images of all ImageButton to their default

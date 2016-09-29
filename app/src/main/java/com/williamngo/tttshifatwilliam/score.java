@@ -1,6 +1,7 @@
 package com.williamngo.tttshifatwilliam;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -12,90 +13,51 @@ public class score extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score);
-
-        //Get intent from MainActivity class
-        Intent receiveIntent = getIntent();
-        int winner = receiveIntent.getIntExtra("player", 9);
-        boolean againstDroid = receiveIntent.getBooleanExtra("againstDroid", false);
-        updateScore(winner, againstDroid);
+        showScore();
     }
 
     /**
+     *  Gets shared preferences value and displays them
      *
-     * @param winner - Represents winner of the game. 1 is user, 2 is opponent, 9 is tie game
-     * @param againstDroid - Determines whether the game was played against the droid or not
      */
-    public void updateScore(int winner, boolean againstDroid)
-    {
-        //Increment wins
-        if(winner == 1) // If user wins
-        {
-            //Get textview of player 1's wins and increment
-            TextView p1wins_textview = (TextView)findViewById(R.id.p1_wins);
-            int p1wins = Integer.parseInt(p1wins_textview.getText().toString());
-            p1wins++;
-            p1wins_textview.setText(p1wins);
+    public void showScore() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
 
-            //Increment losses of player 2
-            TextView p2losses_textview = (TextView)findViewById(R.id.p2_losses);
-            int p2losses = Integer.parseInt(p2losses_textview.getText().toString());
-            p2losses++;
-            p2losses_textview.setText(p2losses);
-        }
+        //Get all values from every player
+        int p1wins = prefs.getInt("p1wins", 0);
+        int cpuwins = prefs.getInt("cpuwins", 0);
+        int p2wins = prefs.getInt("p2wins", 0);
 
-        if(winner == 2) //If opponent wins
-        {
-            if(againstDroid)// If user played against droid
-            {
-                TextView cpuwins_textview = (TextView)findViewById(R.id.cpu_wins);
-                int cpuwins = Integer.parseInt(cpuwins_textview.getText().toString());
-                cpuwins++;
-                cpuwins_textview.setText(cpuwins);
-            }
-            else // means user played against a human
-            {
-                //Get textview of player 2's wins and increment
-                TextView p2wins_textview = (TextView)findViewById(R.id.p2_wins);
-                int p2wins = Integer.parseInt(p2wins_textview.getText().toString());
-                p2wins++;
-                p2wins_textview.setText(p2wins);
-            }
+        int cpulosses = prefs.getInt("cpulosses", 0);
+        int p2losses = prefs.getInt("p2losses", 0);
+        int p1losses = prefs.getInt("p1losses", 0);
 
+        int cputies = prefs.getInt("cputies", 0);
+        int p2ties = prefs.getInt("p2ties", 0);
+        int p1ties = prefs.getInt("p1ties", 0);
 
-            //Increment losses of player 1
-            TextView p1losses_textview = (TextView)findViewById(R.id.p1_losses);
-            int p1losses = Integer.parseInt(p1losses_textview.getText().toString());
-            p1losses++;
-            p1losses_textview.setText(p1losses);
-        }
+        //Get textview of all playres
+        TextView p1wins_textview = (TextView) findViewById(R.id.p1_wins);
+        p1wins_textview.setText(p1wins);
+        TextView p2wins_textview = (TextView) findViewById(R.id.p2_wins);
+        p2wins_textview.setText(p2wins);
+        TextView cpuwins_textview = (TextView) findViewById(R.id.cpu_wins);
+        cpuwins_textview.setText(cpuwins);
 
-        if(winner == 9)//Tie game;
-        {
-            if(againstDroid)
-            {
-                TextView cputies_textview = (TextView)findViewById(R.id.cpu_ties);
-                int cputies = Integer.parseInt(cputies_textview.getText().toString());
-                cputies++;
-                cputies_textview.setText(cputies);
-            }
-            else
-            {
-                TextView p2ties_textview = (TextView)findViewById(R.id.p2_ties);
-                int p2ties = Integer.parseInt(p2ties_textview.getText().toString());
-                p2ties++;
-                p2ties_textview.setText(p2ties);
-            }
+        //Get losses textview and update them
+        TextView cpulosses_textview = (TextView) findViewById(R.id.cpu_losses);
+        cpulosses_textview.setText(cpulosses);
+        TextView p2losses_textview = (TextView) findViewById(R.id.p2_losses);
+        p2losses_textview.setText(p2losses);
+        TextView p1losses_textview = (TextView) findViewById(R.id.p1_losses);
+        p1losses_textview.setText(p1losses);
 
-            TextView p1ties_textview = (TextView)findViewById(R.id.p1_ties);
-            int p1ties = Integer.parseInt(p1ties_textview.getText().toString());
-            p1ties++;
-            p1ties_textview.setText(p1ties);
-        }
-
-
-        //Show win message
-
-        //End this activity
-        finish();
+        //Get ties textview and update them
+        TextView cputies_textview = (TextView) findViewById(R.id.cpu_ties);
+        cputies_textview.setText(cputies);
+        TextView p2ties_textview = (TextView) findViewById(R.id.p2_ties);
+        p2ties_textview.setText(p2ties);
+        TextView p1ties_textview = (TextView) findViewById(R.id.p1_ties);
+        p1ties_textview.setText(p1ties);
     }
 }
