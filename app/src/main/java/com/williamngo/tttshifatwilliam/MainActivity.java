@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         //Resets all values of array to 0
         for (int i : dataArray)
             i = 0;
+
+        //reset turn counter;
+        turnCounter = 0;
     }
 
     /**
@@ -108,8 +111,9 @@ public class MainActivity extends AppCompatActivity {
             ib.setImageResource(R.drawable.tlzino);
         }
 
-        //Increment turn coutner
+        //Increment turn counter
         turnCounter++;
+        System.out.println("Turn counter: " + turnCounter);
 
         //give turn to other player
         playersTurn = !playersTurn;
