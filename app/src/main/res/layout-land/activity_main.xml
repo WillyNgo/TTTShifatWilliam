@@ -10,10 +10,13 @@
     tools:context="com.williamngo.tttshifatwilliam.MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -21,131 +24,139 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/table_container"
-            android:layout_weight="3"
-            >
+            android:layout_weight="5">
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="10">
 
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:id="@+id/imageButton0"
                         android:src="@drawable/quest2"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton1"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:id="@+id/imageButton2"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
                         android:layout_height="match_parent"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton3"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton4"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton5"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton6"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton7"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
 
                     <ImageButton
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/imageButton8"
                         android:layout_weight="1"
                         android:src="@drawable/quest2"
-
+                        android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:adjustViewBounds="true"/>
                 </TableRow>
             </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vsDroid"
+                android:id="@+id/playmode_text"
+                android:layout_gravity="center_horizontal"/>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/menubtn_container"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="1">
 
             <Button
                 android:layout_width="wrap_content"
@@ -188,19 +199,7 @@
                 android:onClick="switchMode"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/vsDroid"
-            android:id="@+id/playmode_text"
-            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </RelativeLayout>

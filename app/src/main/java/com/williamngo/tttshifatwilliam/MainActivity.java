@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static com.williamngo.tttshifatwilliam.R.string.p2ties;
@@ -53,6 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
         //Set event listener and set up image buttons to their cover images
         setUpImageButtons();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle b)
+    {
+        super.onSaveInstanceState(b);
+
+        b.putIntArray("dataArray", dataArray);
+
+        //Gotta find way to save when an imaged has been click in order to put them in bundle
+        //So that when we rotate the screen mid-gameplay, the images that has been clicked stays
     }
 
     public void LaunchAbout(View view)
@@ -138,13 +150,15 @@ public class MainActivity extends AppCompatActivity {
         if(playersTurn)
         {
             dataArray[index] = 1;
-            ib.setImageResource(R.drawable.cross);
+            ib.setImageResource(R.drawable.dkrath);
         }
         else
         {
             dataArray[index] = 2;
             ib.setImageResource(R.drawable.tlzino);
         }
+
+
 
         //Increment turn counter
         turnCounter++;
@@ -382,6 +396,8 @@ public class MainActivity extends AppCompatActivity {
 
         resetBoard();
     }
+
+
 
     /**
      * This listener acts when a player has played its turn
