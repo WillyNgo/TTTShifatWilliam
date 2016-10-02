@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.williamngo.tttshifatwilliam.MainActivity">
+    tools:context="com.williamngo.tttshifatwilliam.MainActivity"
+    android:background="@drawable/bg">
 
     <LinearLayout
         android:orientation="vertical"
@@ -42,7 +43,8 @@
                         android:layout_height="match_parent"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -52,7 +54,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -62,7 +65,8 @@
                         android:layout_height="match_parent"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                 </TableRow>
 
@@ -78,7 +82,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -88,7 +93,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -98,7 +104,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
                 </TableRow>
 
                 <TableRow
@@ -114,7 +121,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -124,7 +132,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="wrap_content"
@@ -134,7 +143,8 @@
                         android:src="@drawable/quest2"
 
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
@@ -200,7 +210,8 @@
             android:layout_height="wrap_content"
             android:text="@string/vsDroid"
             android:id="@+id/playmode_text"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </RelativeLayout>

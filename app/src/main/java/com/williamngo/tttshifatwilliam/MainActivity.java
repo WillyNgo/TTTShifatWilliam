@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,9 +20,11 @@ import static com.williamngo.tttshifatwilliam.R.string.vsDroid;
 public class MainActivity extends AppCompatActivity {
     public boolean againstDroid = true; //Determines whether user is playing against the droid or another human
     public boolean playersTurn = true; //Determines whose turn it currently is
+    boolean winner = false; //Determines is there's a winner or not
     public ImageButton[] imgBtnArray = new ImageButton[9]; //Array holding all the imgBtns
     public int[] dataArray = new int[9]; //Array containing values 0 and 1 that represents X and O
     public int turnCounter = 0; //Counter checks for tie game when it reaches 9 and there is no winner
+
 
 
     @Override
@@ -54,6 +57,49 @@ public class MainActivity extends AppCompatActivity {
 
         //Set event listener and set up image buttons to their cover images
         setUpImageButtons();
+
+        // Restore any data that were in previous state.
+        if(savedInstanceState != null){
+            if(savedInstanceState.getIntArray("dataArray") != null) {
+                // Restore the dataArray
+                this.dataArray = savedInstanceState.getIntArray("dataArray");
+
+                // Restore image buttons that were already in play
+                restoreImageButtons();
+            }
+
+            // Restore some parameters.
+            this.turnCounter = savedInstanceState.getInt("turnCounter");
+            this.againstDroid = savedInstanceState.getBoolean("againstDroid");
+            this.playersTurn = savedInstanceState.getBoolean("playersTurn");
+            this.winner = savedInstanceState.getBoolean("winner");
+
+            // If there's a winner, disable all image buttons.
+            if(winner){
+                disableAllImageButtons();
+            }
+        }
+    }
+
+    /**
+     * Restore the images' state as they were.
+     */
+    private void restoreImageButtons()
+    {
+        // Check which buttons where already in play
+        // and set the images accordingly.
+        for(int i = 0; i < dataArray.length; i++){
+            switch(dataArray[i]){
+                case 1:
+                    imgBtnArray[i].setImageResource(R.drawable.dkrath);
+                    imgBtnArray[i].setOnClickListener(null);
+                    break;
+                case 2:
+                    imgBtnArray[i].setImageResource(R.drawable.tlzino);
+                    imgBtnArray[i].setOnClickListener(null);
+                    break;
+            }
+        }
     }
 
     @Override
@@ -62,9 +108,10 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(b);
 
         b.putIntArray("dataArray", dataArray);
-
-        //Gotta find way to save when an imaged has been click in order to put them in bundle
-        //So that when we rotate the screen mid-gameplay, the images that has been clicked stays
+        b.putInt("turnCounter", turnCounter);
+        b.putBoolean("againstDroid", againstDroid);
+        b.putBoolean("playersTurn", playersTurn);
+        b.putBoolean("winner", winner);
     }
 
     public void LaunchAbout(View view)
@@ -91,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetBoard()
     {
+        winner = false;
         playersTurn = true;
         //Resets all images back to the cover
         setUpImageButtons();
@@ -185,8 +233,8 @@ public class MainActivity extends AppCompatActivity {
         Random rn = new Random();
         int choice = -1;
 
-        // If the board isn't full yet.
-        if(turnCounter != 9)
+        // If the board isn't full yet and there's no winner, play a turn
+        if(turnCounter != 9 && !winner)
         {
             while(!validChoice)
             {
@@ -216,7 +264,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void checkWinner()
     {
-        boolean winner = false;
         int player;
 
         if(!playersTurn)
@@ -251,12 +298,29 @@ public class MainActivity extends AppCompatActivity {
             //If a winner has been found, end game and exit loop
             if(winner) {
                 endGame(player);
+
+                // Display message for the winner
+                switch (player){
+                    case 1:
+                        Toast.makeText(this, "Player 1 won!! Ggwp.", Toast.LENGTH_LONG).show();
+                        break;
+                    case 2:
+                        if(againstDroid)
+                            Toast.makeText(this, "Computer won!! Ggwp.", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(this, "Player 2 won!! Ggwp.", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        System.out.println("Error: Invalid winner");
+                }
+
+
             }
 
         //If played all pieces and there is no winner, end game in a tie
         if(turnCounter == 9 && winner == false) {
             endGame(9);
-            System.out.println("Game is tied!!");
+            Toast.makeText(this, "A tie!!!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -268,11 +332,18 @@ public class MainActivity extends AppCompatActivity {
      */
     public void endGame(int winner) {
         //Game has ended, so disable all remaining buttons
+        disableAllImageButtons();
+
+        updateScore(winner, getApplicationContext());
+    }
+
+    /**
+     * Disables all the image buttons so it cannot be clicked anymore.
+     */
+    private void disableAllImageButtons() {
         //Disables all buttons
         for (ImageButton imgBtn : imgBtnArray)
             imgBtn.setOnClickListener(null);
-
-        updateScore(winner, getApplicationContext());
     }
 
     /**
