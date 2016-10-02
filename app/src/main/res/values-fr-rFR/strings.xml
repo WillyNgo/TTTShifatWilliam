@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TTTShifatWilliam</string>
+    <string name="vsDroid">Vous jouez contre l\'ordinateur</string>
+    <string name="vsHuman">Vous jouez contre un humain</string>
+    <string name="reset_btn">Repartir</string>
+    <string name="zero_btn">Zéro</string>
+    <string name="scores_btn">Pointage</string>
+    <string name="play_btn">Jouer</string>
+    <string name="about_btn">Info</string>
+    <string name="about">Voici un jeu de Tic-Tac-Toe ayant un thème inspiré de la série Monster Hunter!\n\n
+        Pour alterner entre un jeu contre l\'ordinateur et un humain, appuyer sur Jouer.\n\n
+        Pour recommencer une nouvelle partie, appuyer sur Repartir.\n\n
+        Pour effacer le tableau de pointage, appuyer sur Zéro.
+    </string>
+    <string name="credit">Credit: Shifat Khan &amp; William Ngo</string>
+    <string name="wins">Victoires</string>
+    <string name="losses">Défaites</string>
+    <string name="ties">Nuls</string>
+    <string name="player1">Joueur 1</string>
+    <string name="player2">Joueur 2</string>
+    <string name="cpu">ORD</string>
+    <string name="p1wins">0</string>
+    <string name="p1losses">0</string>
+    <string name="p1ties">0</string>
+    <string name="p2wins">0</string>
+    <string name="p2losses">0</string>
+    <string name="p2ties">0</string>
+    <string name="cpuwins">0</string>
+    <string name="cpulosses">0</string>
+    <string name="cputies">0</string>
+    <string name="p1winMsg">Joueur 1 a gagné!</string>
+    <string name="p2winMsg">Joueur 2 a gagné!</string>
+    <string name="cpuwinMsg">L\'ordinateur à gagné!</string>
+    <string name="tieMsg">Match nul!</string>
+</resources>

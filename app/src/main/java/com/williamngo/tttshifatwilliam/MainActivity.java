@@ -302,13 +302,13 @@ public class MainActivity extends AppCompatActivity {
                 // Display message for the winner
                 switch (player){
                     case 1:
-                        Toast.makeText(this, "Player 1 won!! Ggwp.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, R.string.p1winMsg, Toast.LENGTH_LONG).show();
                         break;
                     case 2:
                         if(againstDroid)
-                            Toast.makeText(this, "Computer won!! Ggwp.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, R.string.cpuwinMsg, Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(this, "Player 2 won!! Ggwp.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, R.string.p2winMsg, Toast.LENGTH_LONG).show();
                         break;
                     default:
                         System.out.println("Error: Invalid winner");
@@ -320,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
         //If played all pieces and there is no winner, end game in a tie
         if(turnCounter == 9 && winner == false) {
             endGame(9);
-            Toast.makeText(this, "A tie!!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.tieMsg, Toast.LENGTH_LONG).show();
         }
     }
 

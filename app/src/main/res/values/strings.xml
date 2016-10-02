@@ -7,7 +7,11 @@
     <string name="scores_btn">Score</string>
     <string name="play_btn">Play</string>
     <string name="about_btn">About</string>
-    <string name="about">Here are some rules that I will fill up eventually, for now keep this as placeholder.</string>
+    <string name="about">This is a Tic-Tac-Toe game with a Monster Hunter theme!\n\n
+        If you want to switch between playing against a Human or a Bot, simply press the Play button\n\n
+        The Reset button clears the Tic-Tac-Toe board so you can start a brand new game! \n\n
+        The Zero button deletes all save files for the score.
+    </string>
     <string name="credit">Credits: Shifat Khan &amp; William Ngo</string>
     <string name="wins">Wins</string>
     <string name="losses">Losses</string>
@@ -24,5 +28,8 @@
     <string name="cpuwins">0</string>
     <string name="cpulosses">0</string>
     <string name="cputies">0</string>
-
+    <string name="p1winMsg">Player 1 won!</string>
+    <string name="p2winMsg">Player 2 won!</string>
+    <string name="cpuwinMsg">The Droid won!</string>
+    <string name="tieMsg">Tie game!</string>
 </resources>
