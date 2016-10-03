@@ -9,6 +9,8 @@
 # 
 # The "Zero" button deletes all save files for the score.
 
+- Fixed the transparent background on landscape mode for the board
+
 - Added localization and updated the about page
 
 - Added new backgrounds (for landscape aswell)
