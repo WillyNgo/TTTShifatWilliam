@@ -46,7 +46,8 @@
                         android:layout_height="match_parent"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="match_parent"
@@ -56,7 +57,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="match_parent"
@@ -66,7 +68,8 @@
                         android:layout_height="match_parent"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                 </TableRow>
 
@@ -83,7 +86,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="match_parent"
@@ -93,7 +97,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="match_parent"
@@ -103,7 +108,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
                 </TableRow>
 
                 <TableRow
@@ -119,7 +125,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="match_parent"
@@ -129,7 +136,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
 
                     <ImageButton
                         android:layout_width="match_parent"
@@ -139,7 +147,8 @@
                         android:src="@drawable/quest2"
                         android:padding="10dp"
                         android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"/>
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent" />
                 </TableRow>
             </TableLayout>
 
